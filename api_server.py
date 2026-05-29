@@ -3,7 +3,13 @@ Qichen Agent API 服务
 FastAPI 包装，部署到 Render / Railway
 """
 import sys
+import os
 from pathlib import Path
+
+# 强制 UTF-8 编码
+os.environ["PYTHONIOENCODING"] = "utf-8"
+os.environ["LANG"] = "C.UTF-8"
+os.environ["LC_ALL"] = "C.UTF-8"
 
 BASE_DIR = Path(__file__).parent
 sys.path.insert(0, str(BASE_DIR / "agent"))
@@ -11,12 +17,21 @@ sys.path.insert(0, str(BASE_DIR / "zhu_hun"))
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import uvicorn
 
 from agent_core import QichenAgent
 
-app = FastAPI(title="Qichen AI Agent API")
+
+class UTF8JSONResponse(JSONResponse):
+    media_type = "application/json; charset=utf-8"
+
+
+app = FastAPI(
+    title="Qichen AI Agent API",
+    default_response_class=UTF8JSONResponse,
+)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 # 全局单例 Agent
@@ -82,5 +97,5 @@ def health():
 
 
 if __name__ == "__main__":
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: qichen-ai
+    env: python
+    buildCommand: pip install -r agent/requirements.txt
+    startCommand: python api_server.py
+    plan: free

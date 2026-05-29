@@ -8,13 +8,13 @@ llm:
   temperature: 0.3
 
 memory:
-  db_path: E:/workbuddy/5.27单位到家/extracted/qichen-iteration/qichen-ai/data/memory.db
+  db_path: ./data/memory.db
   dim: 10
   decay_rate: 0.1
   external_strength: 0.05
   save_interval: 10  # 每N步保存一次状态
 
 sandbox:
-  work_dir: E:/workbuddy/5.27单位到家/extracted/qichen-iteration/qichen-ai/sandbox
+  work_dir: ./sandbox
   timeout: 30  # 代码执行超时（秒）
   max_output_lines: 200

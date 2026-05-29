@@ -1,0 +1,4 @@
+#!/bin/bash
+# CloudBase HTTP 云函数启动脚本
+export PYTHONPATH="./agent:./zhu_hun:$PYTHONPATH"
+python api_server.py

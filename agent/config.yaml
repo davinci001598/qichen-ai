@@ -1,0 +1,20 @@
+# Qichen Agent 配置
+llm:
+  provider: deepseek
+  api_key: sk-bf4b0caf063348a1a9bccdc417101eb5
+  model: deepseek-chat
+  base_url: https://api.deepseek.com/v1
+  max_tokens: 4096
+  temperature: 0.3
+
+memory:
+  db_path: E:/workbuddy/5.27单位到家/extracted/qichen-iteration/qichen-ai/data/memory.db
+  dim: 10
+  decay_rate: 0.1
+  external_strength: 0.05
+  save_interval: 10  # 每N步保存一次状态
+
+sandbox:
+  work_dir: E:/workbuddy/5.27单位到家/extracted/qichen-iteration/qichen-ai/sandbox
+  timeout: 30  # 代码执行超时（秒）
+  max_output_lines: 200

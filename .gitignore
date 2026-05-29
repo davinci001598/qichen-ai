@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# 数据
+data/memory.db
+data/agent_soul.json
+sandbox/*
+zhu_hun/zhu_hun_output/*
+agent/__pycache__/
+
+# 环境
+.env
+*.log
+
+# IDE
+.vscode/
+.idea/

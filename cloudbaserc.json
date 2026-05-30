@@ -1,0 +1,12 @@
+{
+  "envId": "qichen-ai-d6g30q9o9b18b2d62",
+  "functionRoot": ".",
+  "functions": [
+    {
+      "name": "qichen-ai",
+      "timeout": 900,
+      "runtime": "Python3.10",
+      "memorySize": 512
+    }
+  ]
+}

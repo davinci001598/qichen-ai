@@ -17,7 +17,8 @@ sys.path.insert(0, str(BASE_DIR / "zhu_hun"))
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import uvicorn
 
@@ -54,13 +55,7 @@ class TaskResponse(BaseModel):
 
 @app.get("/")
 def root():
-    return {
-        "name": "Qichen AI Agent",
-        "version": "2.0",
-        "status": "running",
-        "maturity": f"{agent.soul['maturity']:.0%}",
-        "rules": len(agent.soul["personal_rules"]),
-    }
+    return FileResponse(str(BASE_DIR / "agent" / "static" / "index.html"))
 
 
 @app.get("/soul")
